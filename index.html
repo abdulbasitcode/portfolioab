@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Professional Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background:#0f172a;
+      color:white;
+      line-height:1.6;
+    }
+
+    /* Navbar */
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      background:rgba(15,23,42,0.9);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      color:#38bdf8;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#38bdf8;
+    }
+
+    /* Hero Section */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:120px 8%;
+      flex-wrap:wrap;
+    }
+
+    .hero-text{
+      flex:1;
+      animation:slideLeft 1.5s ease;
+    }
+
+    .hero-text h1{
+      font-size:60px;
+      margin-bottom:20px;
+    }
+
+    .hero-text h1 span{
+      color:#38bdf8;
+    }
+
+    .hero-text p{
+      max-width:600px;
+      margin-bottom:30px;
+      color:#cbd5e1;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#38bdf8;
+      color:#0f172a;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:white;
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .hero-image img{
+      width:350px;
+      border-radius:50%;
+      border:5px solid #38bdf8;
+      box-shadow:0 0 40px rgba(56,189,248,0.5);
+    }
+
+    /* About */
+    section{
+      padding:100px 8%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:50px;
+      color:#38bdf8;
+    }
+
+    .about-content{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:40px;
+      align-items:center;
+    }
+
+    .about-box{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .about-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(56,189,248,0.3);
+    }
+
+    /* Skills */
+    .skills{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .skill-card:hover{
+      transform:scale(1.05);
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    /* Projects */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .project-info{
+      padding:20px;
+    }
+
+    /* Contact */
+    .contact form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact input,
+    .contact textarea{
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      outline:none;
+      background:#1e293b;
+      color:white;
+    }
+
+    .contact button{
+      border:none;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#020617;
+      color:#94a3b8;
+    }
+
+    /* Animations */
+    @keyframes slideLeft{
+      from{
+        opacity:0;
+        transform:translateX(-100px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-20px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      .hero-image img{
+        width:260px;
+        margin-bottom:40px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+      }
+
+      .hero-text h1{
+        font-size:34px;
+      }
+
+      .title{
+        font-size:32px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">MyPortfolio</div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+      <h1>Hello, I'm <span>Abdul Basit</span></h1>
+
+      <p>
+        I am a professional web developer & Content Writer and UI designer creating
+        modern, responsive, and animated websites using HTML, CSS,
+        JavaScript, PHP and modern frontend technologies.
+      </p>
+
+      <a href="#" class="btn">Hire Me</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="AB.jpeg" alt="profile">
+    </div>
+
+  </section>
+
+  <!-- About -->
+  <section id="about">
+
+    <h2 class="title">About Me</h2>
+
+    <div class="about-content">
+
+      <div class="about-box">
+        <h3>Professional Developer</h3>
+        <p>
+          I specialize in creating responsive websites with smooth
+          animations and user-friendly interfaces for businesses
+          and personal brands.
+        </p>
+      </div>
+
+      <div class="about-box">
+        <h3>Creative Designer</h3>
+        <p>
+          My designs focus on clean layouts, modern color schemes,
+          and interactive user experiences across all devices.
+        </p>
+      </div>
+       
+         <div class="about-box">
+        <h3>Content Writer</h3>
+        <p>
+          I am a creative content writer passionate about turning ideas into meaningful stories. 
+          My writing focuses on clarity, creativity, and delivering real value to readers.
+        </p>
+      </div>
+      <div class="about-box">
+        <h3>Artifical Intelligence</h3>
+        <p>
+          I am an AI Tools Expert passionate about exploring modern technology and digital innovation.
+          My expertise includes AI content creation, prompt engineering, chatbot tools, and smart workflow optimization.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+
+    <h2 class="title">My Skills</h2>
+
+    <div class="skills">
+
+      <div class="skill-card">
+        <h3>HTML5</h3>
+      </div>
+
+      <div class="skill-card">
+        <h3>CSS3</h3>
+      </div>
+
+      <div class="skill-card">
+        <h3>JavaScript</h3>
+      </div>
+
+      <div class="skill-card">
+        <h3>PHP</h3>
+      </div>
+
+      <div class="skill-card">
+        <h3>Canva</h3>
+      </div>
+      <div class="skill-card">
+        <h3>Corel Draw</h3>
+      </div>
+      <div class="skill-card">
+        <h3>Artifical Intelligence</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+
+    <h2 class="title">Projects</h2>
+
+    <div class="projects">
+
+      <div class="project-card">
+        <img src="typing.jpg" alt="">
+        <div class="project-info">
+          <h3>Typing Speed Test</h3>
+          <p>Modern responsive business landing page.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="original.png" alt="">
+        <div class="project-info">
+          <h3>Portfolio Design</h3>
+          <p>Animated personal portfolio website design.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="currency.png" alt="">
+        <div class="project-info">
+          <h3>Currency Converter</h3>
+          <p>Professional Currency Converter interface.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+
+    <h2 class="title">Contact Me</h2>
+
+    <form>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea rows="6" placeholder="Your Message"></textarea>
+
+      <button class="btn">Send Message</button>
+
+    </form>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Abdul Basit | © 2026 Professional Portfolio | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
